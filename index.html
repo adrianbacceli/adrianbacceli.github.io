@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adrián Bacceli | Cybersecurity Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --accent: #58a6ff;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --button-bg: #161b22;
+      --button-border: #30363d;
+      --button-hover: #21262d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('https://images.unsplash.com/photo-1614064548237-b1666eab7a09?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: rgba(13, 17, 23, 0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #c9d1d9;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    .main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+    }
+
+    .links a {
+      display: block;
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: #c9d1d9;
+      background: var(--button-bg);
+      border: 1px solid var(--button-border);
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background: var(--button-hover);
+      color: #ffffff;
+      border-color: #8b949e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(13, 17, 23, 0.85);
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        margin-left: 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .card h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Árián Bacceli</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <div class="card">
+      <h1>Adrián Bacceli</h1>
+      <p>Cybersecurity Engineer | Tech Explorer | Lifelong Learner</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/adri%C3%A1n-bacceli/" target="_blank">LinkedIn</a>
+        <a href="https://kb.adrianbacceli.com" target="_blank">Knowledge Base</a>
+        <a href="https://www.credly.com/users/adrian-bacceli" target="_blank">Credly Certifications</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Built with 💻 by Adrián Bacceli · 2025
+  </footer>
+
+</body>
+</html>
