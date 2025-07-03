@@ -3002,6 +3002,10 @@ h6 {
 
 .copy_right_area {
   text-align: center; 
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "Roboto", sans-serif;
+  color: #777777;
 }
 
 .footer_area.p_120 {
