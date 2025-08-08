@@ -95,59 +95,7 @@ export default function PersonalLanding() {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      {/* Navigation */}
-      {/*<header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <nav className="flex gap-6 text-sm font-medium">
-            <a 
-              href="#"
-                className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,0.3)]"
-              >
-                Home
-              </a>
-            <a 
-              href="#about"
-                className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,0.3)]"
-              >
-                About
-              </a>
-            <a 
-              href="#projects"
-              className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,0.3)]"
-            >
-              Projects
-            </a>
-            <a 
-              href="https://kb.adrianbacceli.com" 
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,0.3)]"
-            >
-              Knowledge Base <ExternalLink className="h-3 w-3 opacity-60" />
-            </a>
-
-            <a 
-              href="https://www.credly.com/users/adrian-bacceli/badges" 
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,0.3)]"
-            >
-              Credentials <ExternalLink className="h-3 w-3 opacity-60" />
-            </a>
-          </nav>
-          */}
-            {/* Right-side controls */}
-            {/*<Button
-                variant="ghost"
-                size="icon"
-                aria-label="Toggle theme"
-                onClick={toggle}
-            >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
-        </div>
-      </header>*/}
-      
+      {/* Navigation */}      
       <Navbar onToggleTheme={toggle} theme={theme} />
 
       
