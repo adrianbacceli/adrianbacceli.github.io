@@ -18,13 +18,18 @@ const socials = [
 ];
 
 const skills = [
-  { label: "Storage Technologies", value: 85 },
-  { label: "Networking Enterprise", value: 90 },
-  { label: "Data Protection", value: 70 },
+  { label: "Infrastructure (Server/Network/Storage)", value: 85 },
   { label: "Linux / Windows / VMware", value: 95 },
-  { label: "Ethical Hacking", value: 75 },
-  { label: "Bash / Python / PowerShell", value: 80 },
-  { label: "Java / C++ / JavaScript", value: 60 },
+  { label: "Bash / Python / PowerShell / JavaScript", value: 80 },
+  { label: "Java / C++ / React / Go + AI", value: 60 },
+  { label: "Google Cloud Security", value: 70 },
+  { label: "DevSecOps & CI/CD", value: 80 },
+  { label: "Incident Response", value: 90 },
+  { label: "Risk Management", value: 85 },
+  { label: "Security Architecture", value: 80 },
+  { label: "Application Security", value: 90 }, 
+  { label: "Vulnerability Assessment", value: 95 },
+  { label: "Penetration Testing", value: 75 },
 ];
 
 function useTheme() {
@@ -209,7 +214,8 @@ export default function PersonalLanding() {
               I am an IT and cybersecurity professional with over 7 years of experience in data protection, network analysis, and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt, I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability scanning, and the secure administration of enterprise systems and infrastructure. I am proficient in both defensive and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
             </p>
             <p className="text-neutral-600 dark:text-neutral-300">
-              Currently: Vulnerability Analyst @ Dell Technologies. Building <span className="font-medium">CyberStart</span>, a lean CLI for security project bootstrapping.
+              Currently: Vulnerability Analyst @ Dell Technologies. Supporting enterprise vulnerability management and application security initiatives across global infrastructure. Contributing to tool modernization efforts and operational excellence through structured scanning processes, service delivery, and cross-functional collaboration.
+              Building <span className="font-medium">CyberStart</span>, a lean CLI for security project bootstrapping.
             </p>
             <p className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
               <MapPin className="h-4 w-4" /> Panama City, Panama — available for remote work.
