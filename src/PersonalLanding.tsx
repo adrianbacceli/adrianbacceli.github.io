@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Github, Mail, Twitter, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
-import { ExternalLink } from "lucide-react";
 import profilePic from "./assets/profile.jpg";
 import Stat from "./components/Stat";
+import Navbar from "@/components/navbar";
 
 
 const socials = [
@@ -97,7 +96,7 @@ export default function PersonalLanding() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       {/* Navigation */}
-      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60">
+      {/*<header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <nav className="flex gap-6 text-sm font-medium">
             <a 
@@ -136,8 +135,9 @@ export default function PersonalLanding() {
               Credentials <ExternalLink className="h-3 w-3 opacity-60" />
             </a>
           </nav>
+          */}
             {/* Right-side controls */}
-            <Button
+            {/*<Button
                 variant="ghost"
                 size="icon"
                 aria-label="Toggle theme"
@@ -146,7 +146,12 @@ export default function PersonalLanding() {
                 {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
         </div>
-      </header>
+      </header>*/}
+      
+      <Navbar onToggleTheme={toggle} theme={theme} />
+
+      
+      
 
       {/* Hero */}
       <section id="home" className="mx-auto max-w-6xl px-6 py-16 text-center">
