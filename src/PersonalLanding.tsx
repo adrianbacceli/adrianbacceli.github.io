@@ -18,19 +18,35 @@ const socials = [
 ];
 
 const skills = [
-  { label: "Infrastructure (Server/Network/Storage)", value: 85 },
-  { label: "Linux / Windows / VMware", value: 95 },
-  { label: "Bash / Python / PowerShell / JavaScript", value: 80 },
-  { label: "Java / C++ / React / Go + AI", value: 60 },
-  { label: "Google Cloud Security", value: 70 },
-  { label: "DevSecOps & CI/CD", value: 80 },
-  { label: "Incident Response", value: 90 },
-  { label: "Risk Management", value: 85 },
-  { label: "Security Architecture", value: 80 },
-  { label: "Application Security", value: 90 }, 
-  { label: "Vulnerability Assessment", value: 95 },
-  { label: "Penetration Testing", value: 75 },
+  {
+    category: "Infrastructure & Platforms",
+    items: [
+      { label: "Server / Network / Storage", value: 85 },
+      { label: "Linux / Windows / VMware", value: 95 },
+      { label: "Google Cloud Security", value: 70 },
+      { label: "DevSecOps & CI/CD", value: 80 }
+    ]
+  },
+  {
+    category: "Programming & Scripting",
+    items: [
+      { label: "Bash / Python / PowerShell / JavaScript", value: 80 },
+      { label: "Java / C++ / React / Go + AI", value: 60 }
+    ]
+  },
+  {
+    category: "Security Expertise",
+    items: [
+      { label: "Incident Response", value: 90 },
+      { label: "Risk Management", value: 85 },
+      { label: "Security Architecture", value: 80 },
+      { label: "Application Security", value: 90 },
+      { label: "Vulnerability Assessment", value: 95 },
+      { label: "Penetration Testing", value: 75 }
+    ]
+  }
 ];
+
 
 function useTheme() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -222,10 +238,22 @@ export default function PersonalLanding() {
             </p>
           </div>
           <div>
-            <div className="mb-3 text-sm font-medium tracking-wide text-neutral-500 dark:text-neutral-400">Skills</div>
-            <div className="space-y-4">
-              {skills.map((s) => (
-                <SkillBar key={s.label} label={s.label} value={s.value} />
+            <div className="mb-3 text-sm font-medium tracking-wide text-neutral-500 dark:text-neutral-400">
+              Skills
+            </div>
+
+            <div className="space-y-6">
+              {skills.map((group) => (
+                <div key={group.category}>
+                  <div className="mb-2 text-base font-semibold text-neutral-700 dark:text-neutral-300">
+                    {group.category}
+                  </div>
+                  <div className="space-y-4">
+                    {group.items.map((s) => (
+                      <SkillBar key={s.label} label={s.label} value={s.value} />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
