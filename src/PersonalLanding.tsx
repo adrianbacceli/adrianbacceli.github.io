@@ -233,10 +233,10 @@ export default function PersonalLanding() {
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold md:text-3xl">About</h2>
             <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
-              I am an IT and cybersecurity professional with over 7 years of experience in data protection, network analysis,
+              IT and cybersecurity professional with over 7 years of experience in data protection, network analysis,
               and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt,
               I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability
-              scanning, and the secure administration of enterprise systems and infrastructure. I am proficient in both defensive
+              scanning, and the secure administration of enterprise systems and infrastructure. Proficient in both defensive
               and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
             </p>
             <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
