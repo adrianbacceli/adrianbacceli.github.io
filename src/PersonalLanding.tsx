@@ -166,23 +166,28 @@ export default function PersonalLanding() {
         </p>
 
         {/* Buttons + socials */}
-        <div className="mt-6 flex flex-wrap justify-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
           <Button onClick={() => setShowPopup(true)}>Work with me</Button>
+
           <Button variant="outline" asChild>
             <a href="#resume">Resume</a>
           </Button>
-          {socials.map(({ label, icon: Icon, href }) => (
-            <a
-              key={label}
-              href={href}
-              aria-label={label}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg p-2 opacity-80 ring-1 ring-transparent transition hover:opacity-100 hover:ring-neutral-400 dark:hover:ring-neutral-600"
-            >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
+
+          {/* ← this whole block is now ONE item in the row */}
+          <div className="flex flex-nowrap items-center gap-2 whitespace-nowrap">
+            {socials.map(({ label, icon: Icon, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-lg p-2 opacity-80 ring-1 ring-transparent transition hover:opacity-100 hover:ring-neutral-400 dark:hover:ring-neutral-600"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Inline Results Row */}
@@ -217,40 +222,46 @@ export default function PersonalLanding() {
       </section>
 
 
-      {/* About */}
+    {/* About */}
       <section id="about" className="py-12 md:py-16">
         <div className="mx-auto max-w-6xl grid gap-8 md:grid-cols-2 px-6">
+          {/* Left: About */}
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold md:text-3xl">About</h2>
-            <p className="text-neutral-600 dark:text-neutral-300 text-justify">
-              I am an IT and cybersecurity professional with over 7 years of experience in data protection, network analysis, and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt, I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability scanning, and the secure administration of enterprise systems and infrastructure. I am proficient in both defensive and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
+            <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
+              I am an IT and cybersecurity professional with over 7 years of experience in data protection, network analysis,
+              and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt,
+              I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability
+              scanning, and the secure administration of enterprise systems and infrastructure. I am proficient in both defensive
+              and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
             </p>
-            <p className="text-neutral-600 dark:text-neutral-300 text-justify">
-              Currently: Vulnerability Analyst @ Dell Technologies. Supporting enterprise vulnerability management and application security initiatives across global infrastructure. Contributing to tool modernization efforts and operational excellence through structured scanning processes, service delivery, and cross-functional collaboration.
+            <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
+              Currently: Vulnerability Analyst @ Dell Technologies. Supporting enterprise vulnerability management and
+              application security initiatives across global infrastructure. Contributing to tool modernization efforts and
+              operational excellence through structured scanning processes, service delivery, and cross-functional collaboration.
               Building <span className="font-medium">CyberStart</span>, a lean CLI for security project bootstrapping.
             </p>
             <p className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
               <MapPin className="h-4 w-4" /> Panama City, Panama — available for remote work.
             </p>
           </div>
-          <div>
-            <div className="mb-3 text-sm font-medium tracking-wide text-neutral-500 dark:text-neutral-400">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
-              </div>
-            </div>
-            <div className="space-y-6">
+
+          {/* Right: Skills */}
+          <div className="space-y-4">
+            <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
+            {/* Inherit the same text tone & rhythm as About */}
+            <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {skills.map((group) => (
-                <div key={group.category}>
-                  <div className="mb-2 text-base font-semibold text-neutral-700 dark:text-neutral-300">
+                <section key={group.category} className="space-y-3">
+                  <h3 className="text-base font-semibold text-neutral-700 dark:text-neutral-200">
                     {group.category}
-                  </div>
+                  </h3>
                   <div className="space-y-4">
                     {group.items.map((s) => (
                       <SkillBar key={s.label} label={s.label} value={s.value} />
                     ))}
                   </div>
-                </div>
+                </section>
               ))}
             </div>
           </div>
@@ -267,8 +278,10 @@ export default function PersonalLanding() {
           <Card className="h-full border-neutral-200 transition hover:shadow-md dark:border-neutral-800">
             <CardContent className="pt-6">
               <h3 className="text-lg font-semibold">Knowledge Management</h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 text-justify">This space is dedicated to sharing insights, tools, and learnings in cybersecurity and technology.
-It serves as a knowledge center — a growing collection of notes, resources, experiments, and guides designed to inform, challenge, and connect.</p>
+              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 text-justify">This space is dedicated to 
+                sharing insights, tools, and learnings in cybersecurity and technology. It serves as a knowledge center — 
+                a growing collection of notes, resources, experiments, and guides designed to inform, 
+                challenge, and connect.</p>
               <div className="mt-4 mb-4 flex flex-wrap gap-2">
                 <span className="rounded-full border border-neutral-200 px-2 py-0.5 text-xs dark:border-neutral-800">Knowledge</span>
                 <span className="rounded-full border border-neutral-200 px-2 py-0.5 text-xs dark:border-neutral-800">Security</span>
