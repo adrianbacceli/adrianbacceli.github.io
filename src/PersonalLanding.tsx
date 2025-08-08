@@ -230,7 +230,7 @@ export default function PersonalLanding() {
       <section id="projects" className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-6 flex items-end justify-between">
           <h2 className="text-2xl font-bold">Selected Project</h2>
-          <a href="#contact" className="text-sm opacity-80 hover:opacity-100">See availability →</a>
+          <a href="#contact" className="text-sm opacity-80 hover:opacity-100">See All Projects →</a>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="h-full border-neutral-200 transition hover:shadow-md dark:border-neutral-800">
@@ -245,7 +245,7 @@ It serves as a knowledge center — a growing collection of notes, resources, ex
                 <span className="rounded-full border border-neutral-200 px-2 py-0.5 text-xs dark:border-neutral-800">Obsidian</span>
                 <span className="rounded-full border border-neutral-200 px-2 py-0.5 text-xs dark:border-neutral-800">TypeScript</span>
               </div>
-              <Button variant="ghost" asChild><a href="https://kb.adrianbacceli.com/" target="_blank">Visit</a></Button>
+              <Button variant="ghost" asChild><a href="https://github.com/adrianbacceli/Knowledge_Management" target="_blank">Visit</a></Button>
             </CardContent>
           </Card>
 
