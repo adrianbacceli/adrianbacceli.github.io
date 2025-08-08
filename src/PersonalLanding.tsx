@@ -222,10 +222,10 @@ export default function PersonalLanding() {
         <div className="mx-auto max-w-6xl grid gap-8 md:grid-cols-2 px-6">
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold md:text-3xl">About</h2>
-            <p className="text-neutral-600 dark:text-neutral-300">
+            <p className="text-neutral-600 dark:text-neutral-300 text-justify">
               I am an IT and cybersecurity professional with over 7 years of experience in data protection, network analysis, and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt, I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability scanning, and the secure administration of enterprise systems and infrastructure. I am proficient in both defensive and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
             </p>
-            <p className="text-neutral-600 dark:text-neutral-300">
+            <p className="text-neutral-600 dark:text-neutral-300 text-justify">
               Currently: Vulnerability Analyst @ Dell Technologies. Supporting enterprise vulnerability management and application security initiatives across global infrastructure. Contributing to tool modernization efforts and operational excellence through structured scanning processes, service delivery, and cross-functional collaboration.
               Building <span className="font-medium">CyberStart</span>, a lean CLI for security project bootstrapping.
             </p>
@@ -235,9 +235,10 @@ export default function PersonalLanding() {
           </div>
           <div>
             <div className="mb-3 text-sm font-medium tracking-wide text-neutral-500 dark:text-neutral-400">
-              Skills
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
+              </div>
             </div>
-
             <div className="space-y-6">
               {skills.map((group) => (
                 <div key={group.category}>
@@ -265,8 +266,8 @@ export default function PersonalLanding() {
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="h-full border-neutral-200 transition hover:shadow-md dark:border-neutral-800">
             <CardContent className="pt-6">
-              <h3 className="text-lg font-semibold">Knowledge_Management</h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">This space is dedicated to sharing insights, tools, and learnings in cybersecurity and technology.
+              <h3 className="text-lg font-semibold">Knowledge Management</h3>
+              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 text-justify">This space is dedicated to sharing insights, tools, and learnings in cybersecurity and technology.
 It serves as a knowledge center — a growing collection of notes, resources, experiments, and guides designed to inform, challenge, and connect.</p>
               <div className="mt-4 mb-4 flex flex-wrap gap-2">
                 <span className="rounded-full border border-neutral-200 px-2 py-0.5 text-xs dark:border-neutral-800">Knowledge</span>
