@@ -100,7 +100,7 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
             aria-hidden={useSidebar}
           >
             <a
-              href="#home"
+              href="#"
               className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
             >
               Home
@@ -192,7 +192,7 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
         <nav className="flex flex-col px-4 py-3 text-sm font-medium">
           <a
             className="py-3 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="#home"
+            href="#"
             onClick={navClick}
           >
             Home
