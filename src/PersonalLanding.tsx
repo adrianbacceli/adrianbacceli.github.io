@@ -161,21 +161,20 @@ export default function PersonalLanding() {
         </div>
 
         {/* Intro */}
-        <p className="text-sm uppercase tracking-wide">Hello Everybody, I am</p>
         <h1 className="mt-2 text-4xl font-bold md:text-6xl">Adrián Bacceli</h1>
         <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
           Cybersecurity and IT Infrastructure Engineering Consultant
         </p>
         <p className="mt-2 text-neutral-500">
-          Securing the digital landscape — one system at a time.
+          Protecting what drives your business forward.
         </p>
 
         {/* Buttons + socials */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-          <Button onClick={() => setShowPopup(true)}>Work with me</Button>
+          <Button onClick={() => setShowPopup(true)}>Get in Touch</Button>
 
           <Button variant="outline" asChild>
-            <a href="#resume">Resume</a>
+            <a href="#projects">Portfolio</a>
           </Button>
 
           {/* ← this whole block is now ONE item in the row */}
@@ -385,8 +384,7 @@ export default function PersonalLanding() {
             className="relative w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-6 text-center shadow-lg dark:border-neutral-800 dark:bg-neutral-900"
           >
             <p className="mb-4 text-lg">
-              Click Connect & send me a quick note—<br />
-              <span className="italic">“Hi, I’d like to work with you.”</span>
+              Connect and let’s explore how we can work together.
             </p>
 
             <div className="mt-2 flex justify-center gap-3">
