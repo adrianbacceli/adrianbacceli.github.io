@@ -234,16 +234,21 @@ export default function PersonalLanding() {
             <h2 className="text-2xl font-semibold md:text-3xl">About</h2>
             <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
               IT and cybersecurity professional with over 7 years of experience in data protection, network analysis,
-              and cybersecurity strategies. With a Cybersecurity Engineering degree and multiple certifications under my belt,
-              I have mastered Linux and Cloud technologies. My hands-on expertise spans penetration testing, vulnerability
+              and cybersecurity strategy. Hold a Cybersecurity Engineering degree and multiple certifications, with
+              deep expertise in Linux and cloud technologies. Hands-on experience spans penetration testing, vulnerability
               scanning, and the secure administration of enterprise systems and infrastructure. Proficient in both defensive
-              and offensive security, consistently pushing the boundaries to protect and enhance cybersecurity measures.
+              and offensive security, consistently working to protect and enhance cybersecurity measures.
             </p>
+
+            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+              Current Role — Vulnerability Analyst @ Dell Technologies
+            </p>
+
             <p className="text-neutral-600 dark:text-neutral-300 text-justify leading-relaxed">
-              Currently: Vulnerability Analyst @ Dell Technologies. Supporting enterprise vulnerability management and
-              application security initiatives across global infrastructure. Contributing to tool modernization efforts and
-              operational excellence through structured scanning processes, service delivery, and cross-functional collaboration.
-              Building <span className="font-medium">CyberStart</span>, a lean CLI for security project bootstrapping.
+              Support enterprise vulnerability management and application security initiatives across global infrastructure.
+              Contribute to tool modernization efforts and operational excellence through structured scanning processes,
+              service delivery, and cross-functional collaboration. Building <span className="font-medium">CyberStart</span>,
+              a lean CLI for security project bootstrapping.
             </p>
             <p className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
               <MapPin className="h-4 w-4" /> Panama City, Panama — available for remote work.
