@@ -21,28 +21,24 @@ const skills = [
   {
     category: "Infrastructure & Platforms",
     items: [
-      { label: "Server / Network / Storage", value: 85 },
-      { label: "Linux / Windows / VMware", value: 95 },
-      { label: "Google Cloud Security", value: 70 },
-      { label: "DevSecOps & CI/CD", value: 80 }
+      { label: "Infrastructure (Server/Network/Storage)", value: 85 },
+      { label: "Operating Systems (Windows/Linux/VMware)", value: 95 },
+      { label: "Cloud and DevSecOps (K8s/Docker/Jenkins)", value: 70 },
     ]
   },
   {
     category: "Programming & Scripting",
     items: [
-      { label: "Bash / Python / PowerShell / JavaScript", value: 80 },
-      { label: "Java / C++ / React / Go + AI", value: 60 }
+      { label: "Programming (Bash/Python/PowerShell)", value: 80 },
+      { label: "Web Development (HTML/CSS/JavaScript)", value: 60 }
     ]
   },
   {
     category: "Security Expertise",
     items: [
-      { label: "Incident Response", value: 90 },
-      { label: "Risk Management", value: 85 },
-      { label: "Security Architecture", value: 80 },
-      { label: "Application Security", value: 90 },
-      { label: "Vulnerability Assessment", value: 95 },
-      { label: "Penetration Testing", value: 75 }
+      { label: "Blue Team", value: 85 },
+      { label: "Red Team", value: 70 },
+      { label: "Governance, Risk, and Compliance", value: 80 },
     ]
   }
 ];
