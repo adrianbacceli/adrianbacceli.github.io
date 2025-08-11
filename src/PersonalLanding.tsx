@@ -22,22 +22,24 @@ const skills = [
     items: [
       { label: "Infrastructure (Server/Network/Storage)", value: 85 },
       { label: "Operating Systems (Windows/Linux/VMware)", value: 95 },
-      { label: "Cloud and DevSecOps (K8s/Docker/Jenkins)", value: 70 },
+      { label: "Cloud Technologies (K8s/AWS/GCP)", value: 75 }
     ]
   },
   {
     category: "Programming & Scripting",
     items: [
-      { label: "Programming (Bash/Python/PowerShell)", value: 80 },
-      { label: "Web Development (HTML/CSS/JavaScript)", value: 60 }
+      { label: "Programming (C++/Java/Python)", value: 80 },
+      { label: "Web Development (HTML/CSS/JavaScript)", value: 70 },
+      { label: "Terminal (PowerShell/Bash/Cisco IOS)", value: 75 }
     ]
   },
   {
     category: "Security Expertise",
     items: [
-      { label: "Blue Team", value: 85 },
-      { label: "Red Team", value: 70 },
+      { label: "Blue Team (IR, SOC, Threat Hunting)", value: 85 },
+      { label: "Red Team (Web/Network Pentest)", value: 70 },
       { label: "Governance, Risk, and Compliance", value: 80 },
+      { label: "DevSecOps (DAST/SAST/Jenkins)", value: 95 },
     ]
   }
 ];
