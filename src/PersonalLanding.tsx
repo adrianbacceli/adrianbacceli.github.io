@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import profilePic from "./assets/profile_152x152.jpg";
 import Stat from "./components/Stat";
 import Navbar from "@/components/navbar";
+import UnderlineLink from "@/components/UnderlineLink";
 
 
 const socials = [
@@ -235,7 +236,7 @@ export default function PersonalLanding() {
       <section id="projects" className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-6 flex items-end justify-between">
           <h2 className="text-2xl font-bold">Selected Project</h2>
-          <a href="https://github.com/adrianbacceli?tab=repositories" className="text-sm opacity-80 hover:opacity-100">See All Projects →</a>
+          <UnderlineLink href="https://github.com/adrianbacceli?tab=repositories">See All Projects</UnderlineLink>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="h-full border-neutral-200 transition hover:shadow-md dark:border-neutral-800">
@@ -317,13 +318,13 @@ export default function PersonalLanding() {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p>© {new Date().getFullYear()} Adrian Bacceli. All rights reserved.</p>
           <div className="flex items-center gap-2">
-            <a href="#" className="opacity-80 hover:opacity-100">Top</a>
+            <UnderlineLink href="#">Top</UnderlineLink>
             <span>·</span>
-            <a href="#about" className="opacity-80 hover:opacity-100">About</a>
+            <UnderlineLink href="#about">About</UnderlineLink>
             <span>·</span>
-            <a href="#projects" className="opacity-80 hover:opacity-100">Projects</a>
+            <UnderlineLink href="#projects">Projects</UnderlineLink>
             <span>·</span>
-            <a href="#contact" className="opacity-80 hover:opacity-100">Contact</a>
+            <UnderlineLink href="#contact">Contact</UnderlineLink>
           </div>
         </div>
       </footer>
