@@ -208,7 +208,10 @@ export default function PersonalLanding() {
 
           {/* Right: Skills */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
+            <div className="mb-6 flex items-end justify-between">
+              <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
+              <UnderlineLink href="https://www.credly.com/users/adrian-bacceli/badges" target="_blank">See All Credentials</UnderlineLink>
+            </div>
             <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {skills.map((group) => (
                 <section key={group.category} className="space-y-3">
@@ -236,7 +239,7 @@ export default function PersonalLanding() {
       <section id="projects" className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-6 flex items-end justify-between">
           <h2 className="text-2xl font-bold">Selected Project</h2>
-          <UnderlineLink href="https://github.com/adrianbacceli?tab=repositories">See All Projects</UnderlineLink>
+          <UnderlineLink href="https://github.com/adrianbacceli?tab=repositories" target="_blank">See All Projects</UnderlineLink>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="h-full border-neutral-200 transition hover:shadow-md dark:border-neutral-800">
