@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Github, Mail, Twitter, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
-import profilePic from "./assets/profile.jpg";
+import profilePic from "./assets/profile_152x152.jpg";
 import Stat from "./components/Stat";
 import Navbar from "@/components/navbar";
 
