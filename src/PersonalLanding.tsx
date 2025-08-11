@@ -1,13 +1,13 @@
-import React from "react";
-import { motion } from "framer-motion";
+//import React from "react";
+//import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Github, Mail, Twitter, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import profilePic from "./assets/profile.jpg";
-import Stat from "./components/Stat";
+import Stat from "./components/Stat"; 
 import Navbar from "@/components/navbar";
-
+import SkillRating, { SkillLegend } from "./components/SkillRating";
 
 const socials = [
   { label: "Email", icon: Mail, href: "mailto:contactme@adrianbacceli.com" },
@@ -16,6 +16,7 @@ const socials = [
   { label: "Twitter", icon: Twitter, href: "https://x.com/adrianbacceli" },
 ];
 
+/*
 const skills = [
   {
     category: "Infrastructure & Platforms",
@@ -43,7 +44,39 @@ const skills = [
     ]
   }
 ];
+*/
+type Level = 0 | 1 | 2 | 3;
 
+const skills: Array<{
+  category: string;
+  items: { label: string; level: Level }[];
+}> = [
+  {
+    category: "Infrastructure & Platforms",
+    items: [
+      { label: "Windows / Linux / VMware", level: 3 },
+      { label: "Servers / Networking / Storage", level: 2 },
+      { label: "Cloud: K8s / AWS / GCP", level: 2 },
+    ],
+  },
+  {
+    category: "Programming & Scripting",
+    items: [
+      { label: "Python / C++ / Java", level: 2 },
+      { label: "Bash / PowerShell / Cisco IOS", level: 2 },
+      { label: "Web: HTML / CSS / JavaScript", level: 1 },
+    ],
+  },
+  {
+    category: "Security Expertise",
+    items: [
+      { label: "DevSecOps: DAST / SAST / Jenkins", level: 3 },
+      { label: "Blue Team: IR / SOC / Threat Hunting", level: 2 },
+      { label: "Red Team: Web / Network Pentest", level: 2 },
+      { label: "Governance / Risk / Compliance", level: 2 },
+    ],
+  },
+];
 
 function useTheme() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -63,7 +96,7 @@ function useTheme() {
   return { theme, toggle } as const;
 }
 
-const SkillBar: React.FC<{ label: string; value: number }> = ({ label, value }) => {
+/*const SkillBar: React.FC<{ label: string; value: number }> = ({ label, value }) => {
   return (
     <div className="space-y-1">
       <div className="flex items-center justify-between text-sm">
@@ -89,7 +122,7 @@ const SkillBar: React.FC<{ label: string; value: number }> = ({ label, value }) 
       </div>
     </div>
   );
-};
+};*/
 
 export default function PersonalLanding() {
     const { theme, toggle } = useTheme();
@@ -208,7 +241,33 @@ export default function PersonalLanding() {
           {/* Right: Skills */}
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
-            {/* Inherit the same text tone & rhythm as About */}
+
+            {/* Legend */}
+            <SkillLegend />
+
+            {/* Same tone as About */}
+            <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              {skills.map((group) => (
+                <section key={group.category} className="space-y-3">
+                  <h3 className="text-base font-semibold text-neutral-700 dark:text-neutral-200">
+                    {group.category}
+                  </h3>
+                  <div className="space-y-3">
+                    {group.items.map((s) => (
+                      <SkillRating key={s.label} label={s.label} level={s.level} />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+
+
+{/*
+          {/* Right: Skills 
+          <div className="space-y-4">
+            <h2 className="text-2xl font-semibold md:text-3xl">Skills</h2>
+            {/* Inherit the same text tone & rhythm as About 
             <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {skills.map((group) => (
                 <section key={group.category} className="space-y-3">
@@ -224,6 +283,8 @@ export default function PersonalLanding() {
               ))}
             </div>
           </div>
+
+*/}
         </div>
       </section>
 
