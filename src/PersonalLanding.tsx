@@ -70,7 +70,7 @@ const SegmentedSkillBar: React.FC<{ label: string; level: number; labelText: str
     <div className="space-y-1">
       <div className="flex items-center justify-between text-sm">
         <span className="font-medium">{label}</span>
-        <span className="tabular-nums opacity-70">{level} - {labelText}</span>
+        <span className="tabular-nums text-neutral-700 dark:text-neutral-300">{level} - {labelText}</span>
       </div>
 
       <div className="flex gap-1">
