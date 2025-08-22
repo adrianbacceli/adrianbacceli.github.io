@@ -1,0 +1,3 @@
+Contact: mailto:contactme@adrianbacceli.com
+Expires: 2030-12-31T00:00:00Z
+Preferred-Languages: en, es

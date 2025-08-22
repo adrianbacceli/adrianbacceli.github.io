@@ -327,6 +327,8 @@ export default function PersonalLanding() {
             <span>·</span>
             <UnderlineLink href="#projects">Projects</UnderlineLink>
             <span>·</span>
+            <UnderlineLink href="https://blog.adrianbacceli.com">Blog</UnderlineLink>
+            <span>·</span>
             <UnderlineLink href="#contact">Contact</UnderlineLink>
           </div>
         </div>

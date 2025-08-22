@@ -118,6 +118,15 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
               Projects
             </a>
             <a
+            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
+            href="https://blog.adrianbacceli.com"
+            target="_blank"
+            rel="noreferrer"
+            onClick={navClick}
+            >
+              Blog <ExternalLink className="h-3 w-3 opacity-60" />
+            </a>
+            <a
               href="https://kb.adrianbacceli.com"
               target="_blank"
               rel="noreferrer"
@@ -210,6 +219,15 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
             onClick={navClick}
           >
             Projects
+          </a>
+          <a
+            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
+            href="https://blog.adrianbacceli.com"
+            target="_blank"
+            rel="noreferrer"
+            onClick={navClick}
+          >
+            Blog <ExternalLink className="h-3 w-3 opacity-60" />
           </a>
           <a
             className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
