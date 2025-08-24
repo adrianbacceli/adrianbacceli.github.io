@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon, ExternalLink } from "lucide-react";
 import { createPortal } from "react-dom";
+import UnderlineLink from "@/components/UnderlineLink";
 
 type Props = {
   onToggleTheme: () => void;
@@ -25,7 +26,7 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
 
     let raf = 0;
     const BUFFER = 16; // px of slack to avoid rapid toggling
-    const EARLY_SWITCH = 64;  // minimum desired gap to the right in px (tune 48–96)
+    const EARLY_SWITCH = 64; // minimum desired gap to the right in px (tune 48–96)
 
     const update = () => {
       // Require an extra right-side gap so we flip before touching the controls
@@ -78,80 +79,75 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
   }, [useSidebar, drawerOpen]);
 
   useEffect(() => {
-  if (!drawerOpen) return;
-  const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setDrawerOpen(false); };
-  window.addEventListener("keydown", onKey);
-  return () => window.removeEventListener("keydown", onKey);
-}, [drawerOpen]);
+    if (!drawerOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDrawerOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [drawerOpen]);
 
   // helper to close drawer when clicking a link
   const navClick = () => setDrawerOpen(false);
 
   return (
     <header className="sticky top-0 z-[100] backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60">
-      <div ref={shellRef} className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div
+        ref={shellRef}
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+      >
         {/* Left: links */}
         <div ref={leftRef} className="min-w-0 flex flex-1">
           <div
             ref={linksRef}
             className={`min-w-0 flex items-center gap-6 whitespace-nowrap text-sm font-medium ${
-              useSidebar ? "absolute -left-[9999px] -top-[9999px] opacity-0 pointer-events-none" : ""
+              useSidebar
+                ? "absolute -left-[9999px] -top-[9999px] opacity-0 pointer-events-none"
+                : ""
             }`}
             aria-hidden={useSidebar}
           >
-            <a
-              href="#"
-              className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className="transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
-            >
-              Projects
-            </a>
-            <a
-            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="https://blog.adrianbacceli.com"
-            target="_blank"
-            rel="noreferrer"
-            onClick={navClick}
+            <UnderlineLink href="#">Home</UnderlineLink>
+            <UnderlineLink href="#about">About</UnderlineLink>
+            <UnderlineLink href="#projects">Projects</UnderlineLink>
+
+            <UnderlineLink
+              href="https://blog.adrianbacceli.com"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1"
+              onClick={navClick}
             >
               Blog <ExternalLink className="h-3 w-3 opacity-60" />
-            </a>
-            <a
+            </UnderlineLink>
+
+            <UnderlineLink
               href="https://kb.adrianbacceli.com"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
+              className="flex items-center gap-1"
             >
               Knowledge Base <ExternalLink className="h-3 w-3 opacity-60" />
-            </a>
-            <a
+            </UnderlineLink>
+
+            <UnderlineLink
               href="https://www.credly.com/users/adrian-bacceli/badges"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)]"
+              className="flex items-center gap-1"
             >
               Credentials <ExternalLink className="h-3 w-3 opacity-60" />
-            </a>
+            </UnderlineLink>
           </div>
         </div>
 
-          {/* Right controls */}
-          <div
-            className={`flex items-center gap-2 shrink-0 transition-opacity ${
-              drawerOpen ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
-            aria-hidden={drawerOpen}
-          >
+        {/* Right controls */}
+        <div
+          className={`flex items-center gap-2 shrink-0 transition-opacity ${
+            drawerOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+          aria-hidden={drawerOpen}
+        >
           {/* Theme toggle */}
           <Button
             variant="ghost"
@@ -161,6 +157,8 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
           >
             {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
+
+          {/* Burger (visible only when sidebar mode is active) */}
           <Button
             variant="ghost"
             size="icon"
@@ -170,89 +168,91 @@ export default function Navbar({ onToggleTheme, theme }: Props) {
             aria-controls="side-drawer"
             onClick={() => setDrawerOpen(true)}
           >
-            {/* simple burger */}
             <span className="text-lg leading-none">☰</span>
           </Button>
         </div>
       </div>
 
- {/* Drawer + backdrop via portal */}
- {useSidebar && typeof window !== "undefined" &&
-   createPortal(
-     <div className={`fixed inset-0 z-[2000] ${drawerOpen ? "" : "pointer-events-none"}`}>
-       {/* Backdrop */}
-       <button
-         className={`absolute inset-0 bg-black/40 transition-opacity ${drawerOpen ? "opacity-100" : "opacity-0"}`}
-         onClick={() => setDrawerOpen(false)}
-         aria-label="Close menu backdrop"
-       />
-       {/* Panel */}
-       <aside
-         id="side-drawer"
-         role="dialog"
-         aria-modal="true"
-         className={`absolute inset-y-0 left-0 w-80 max-w-[85vw] border-r bg-white dark:bg-neutral-950 shadow-2xl transition-transform
-                     ${drawerOpen ? "translate-x-0" : "-translate-x-full"}`}
-       >
-         <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white/90 px-4 py-3 backdrop-blur dark:bg-neutral-950/90">
-           <span className="font-semibold">Menu</span>
-           <button onClick={() => setDrawerOpen(false)} aria-label="Close menu">✕</button>
-         </div>
-        <nav className="flex flex-col px-4 py-3 text-sm font-medium">
-          <a
-            className="py-3 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="#"
-            onClick={navClick}
+      {/* Drawer + backdrop via portal */}
+      {useSidebar &&
+        typeof window !== "undefined" &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-[2000] ${
+              drawerOpen ? "" : "pointer-events-none"
+            }`}
           >
-            Home
-          </a>
-          <a
-            className="py-3 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="#about"
-            onClick={navClick}
-          >
-            About
-          </a>
-          <a
-            className="py-3 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="#projects"
-            onClick={navClick}
-          >
-            Projects
-          </a>
-          <a
-            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="https://blog.adrianbacceli.com"
-            target="_blank"
-            rel="noreferrer"
-            onClick={navClick}
-          >
-            Blog <ExternalLink className="h-3 w-3 opacity-60" />
-          </a>
-          <a
-            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="https://kb.adrianbacceli.com"
-            target="_blank"
-            rel="noreferrer"
-            onClick={navClick}
-          >
-            Knowledge Base <ExternalLink className="h-3 w-3 opacity-60" />
-          </a>
-          <a
-            className="py-3 flex items-center gap-1 transition-all duration-300 hover:shadow-[0_4px_6px_-4px_rgba(0,0,0,.3)] dark:hover:shadow-[0_4px_6px_-4px_rgba(255,255,255,.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 rounded"
-            href="https://www.credly.com/users/adrian-bacceli/badges"
-            target="_blank"
-            rel="noreferrer"
-            onClick={navClick}
-          >
-            Credentials <ExternalLink className="h-3 w-3 opacity-60" />
-          </a>
-         </nav>
-       </aside>
-     </div>,
-     document.body
-   )
- }
+            {/* Backdrop */}
+            <button
+              className={`absolute inset-0 bg-black/40 transition-opacity ${
+                drawerOpen ? "opacity-100" : "opacity-0"
+              }`}
+              onClick={() => setDrawerOpen(false)}
+              aria-label="Close menu backdrop"
+            />
+
+            {/* Panel */}
+            <aside
+              id="side-drawer"
+              role="dialog"
+              aria-modal="true"
+              className={`absolute inset-y-0 left-0 w-80 max-w-[85vw] border-r bg-white dark:bg-neutral-950 shadow-2xl transition-transform ${
+                drawerOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
+            >
+              <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white/90 px-4 py-3 backdrop-blur dark:bg-neutral-950/90">
+                <span className="font-semibold">Menu</span>
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  aria-label="Close menu"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <nav className="flex flex-col px-4 py-3 text-sm font-medium">
+                {/* You can keep these simple, or also switch to UnderlineLink for consistency */}
+                <UnderlineLink className="py-3" href="#" onClick={navClick}>
+                  Home
+                </UnderlineLink>
+                <UnderlineLink className="py-3" href="#about" onClick={navClick}>
+                  About
+                </UnderlineLink>
+                <UnderlineLink className="py-3" href="#projects" onClick={navClick}>
+                  Projects
+                </UnderlineLink>
+                <UnderlineLink
+                  className="py-3 flex items-center gap-1"
+                  href="https://blog.adrianbacceli.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={navClick}
+                >
+                  Blog <ExternalLink className="h-3 w-3 opacity-60" />
+                </UnderlineLink>
+                <UnderlineLink
+                  className="py-3 flex items-center gap-1"
+                  href="https://kb.adrianbacceli.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={navClick}
+                >
+                  Knowledge Base <ExternalLink className="h-3 w-3 opacity-60" />
+                </UnderlineLink>
+                <UnderlineLink
+                  className="py-3 flex items-center gap-1"
+                  href="https://www.credly.com/users/adrian-bacceli/badges"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={navClick}
+                >
+                  Credentials <ExternalLink className="h-3 w-3 opacity-60" />
+                </UnderlineLink>
+              </nav>
+            </aside>
+          </div>,
+          document.body
+        )}
     </header>
   );
 }

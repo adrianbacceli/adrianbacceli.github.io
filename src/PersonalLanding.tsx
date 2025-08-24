@@ -107,13 +107,15 @@ export default function PersonalLanding() {
       {/* Hero */}
       <section id="home" className="mx-auto max-w-6xl px-6 py-16 text-center">
         {/* Profile image */}
-        <div className="mx-auto mb-6 h-40 w-40 overflow-hidden rounded-full border-4 border-neutral-200 dark:border-neutral-800">
+        <div className="mx-auto mb-6 h-40 w-40 overflow-hidden rounded-full border-4 
+                        border-neutral-200 dark:border-neutral-800 
+                        hover:border-gold transition-colors duration-300">
           <img src={profilePic} alt="Adrián Bacceli" className="h-full w-full object-cover" />
         </div>
 
-        {/* Intro */}
-        <h1 className="mt-2 text-4xl font-bold md:text-6xl">Adrián Bacceli</h1>
-        <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+      {/* Intro */}
+      <h1 className="mt-2 text-4xl font-bold md:text-6xl">Adrián Bacceli</h1>
+      <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
           Cybersecurity and IT Infrastructure Engineering Consultant
         </p>
         <p className="mt-2 text-neutral-500">
