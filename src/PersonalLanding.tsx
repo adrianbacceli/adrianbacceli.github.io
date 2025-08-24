@@ -13,7 +13,7 @@ import UnderlineLink from "@/components/UnderlineLink";
 const socials = [
   { label: "Email", icon: Mail, href: "mailto:contactme@adrianbacceli.com" },
   { label: "GitHub", icon: Github, href: "https://github.com/adrianbacceli" },
-  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/adri%C3%A1n-bacceli/" },
+  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/adrian-bacceli/" },
   { label: "Twitter", icon: Twitter, href: "https://x.com/adrianbacceli" },
 ];
 
@@ -359,7 +359,7 @@ export default function PersonalLanding() {
             <div className="mt-2 flex justify-center gap-3">
               <Button asChild>
                 <a
-                  href="https://www.linkedin.com/in/adri%C3%A1n-bacceli/"
+                  href="https://www.linkedin.com/in/adrian-bacceli/"
                   target="_blank"
                   rel="noreferrer"
                 >
