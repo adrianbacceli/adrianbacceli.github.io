@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: global font & smooth rendering */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -71,5 +70,15 @@
   }
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    min-width: 320px;
+    background: #fff;
+    text-rendering: optimizeLegibility;
+  }
+  .dark body {
+    background: #0a0a0a;
+  }
+  ::selection {
+    background: rgba(152, 114, 60, .22);
   }
 }

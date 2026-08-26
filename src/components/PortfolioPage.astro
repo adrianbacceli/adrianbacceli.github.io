@@ -1,0 +1,123 @@
+---
+import { GithubIcon, LinkedinIcon, Mail, MapPin, Phone, XIcon } from 'lucide-react';
+import profilePic from '../assets/profile-current.jpg';
+import type { Locale, SiteContent } from '../i18n/content';
+import KpiShowcase from './KpiShowcase';
+import ProjectsCarousel from './ProjectsCarousel';
+import SiteHeader from './SiteHeader.astro';
+import '../components/SkillsOverview.css';
+
+interface Props { locale: Locale; content: SiteContent }
+const { locale, content } = Astro.props;
+const root = locale === 'en' ? '/' : `/${locale}/`;
+const socials = [
+  { label: content.social.email, icon: Mail, href: 'mailto:contactme@adrianbacceli.com' },
+  { label: content.social.phone, icon: Phone, href: 'tel:+50765125606' },
+  { label: content.social.github, icon: GithubIcon, href: 'https://github.com/adrianbacceli' },
+  { label: content.social.linkedin, icon: LinkedinIcon, href: 'https://www.linkedin.com/in/adrian-bacceli/' },
+  { label: content.social.twitter, icon: XIcon, href: 'https://x.com/adrianbacceli' },
+];
+---
+<div class="min-h-screen bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+  <SiteHeader locale={locale} content={content} />
+
+  <main>
+    <section id="home" class="mx-auto max-w-6xl px-6 py-16 text-center">
+      <div class="mx-auto mb-6 h-40 w-40 overflow-hidden rounded-full border-4 border-neutral-200 transition-colors duration-300 hover:border-gold dark:border-neutral-800">
+        <img src={profilePic.src} width={profilePic.width} height={profilePic.height} alt="Adrián Alberto Bacceli" class="h-full w-full object-cover" fetchpriority="high" />
+      </div>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight md:text-6xl">Adrián Alberto Bacceli</h1>
+      <p class="mt-4 text-lg text-neutral-700 dark:text-neutral-300">{content.hero.role}</p>
+      <p class="mt-2 text-neutral-600 dark:text-neutral-400">{content.hero.tagline}</p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
+        <a class="primary-button" href="#impact">{content.hero.impact}</a>
+        <a class="secondary-button" href="#projects">{content.hero.portfolio}</a>
+        <div class="flex flex-nowrap items-center gap-2 whitespace-nowrap">
+          {socials.map(({ label, icon: Icon, href }) => (
+            <a href={href} aria-label={label} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined} class="rounded-lg p-2 opacity-80 ring-1 ring-transparent transition hover:opacity-100 hover:ring-neutral-400 focus-visible:outline-gold dark:hover:ring-neutral-600"><Icon size={20} /></a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-12 md:py-16">
+      <div class="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2">
+        <div class="space-y-4">
+          <h2 class="text-2xl font-semibold md:text-3xl">{content.about.heading}</h2>
+          <p class="leading-relaxed text-neutral-700 dark:text-neutral-300">{content.about.intro}</p>
+          <p class="font-medium leading-relaxed text-neutral-700 dark:text-neutral-300">{content.about.currentRole}</p>
+          <p class="leading-relaxed text-neutral-700 dark:text-neutral-300">{content.about.roleDetail}</p>
+          <p class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400"><MapPin size={16} /> {content.about.location}</p>
+        </div>
+        <div class="space-y-4">
+          <div class="mb-6 flex items-end justify-between gap-4">
+            <h2 class="text-2xl font-semibold md:text-3xl">{content.about.skills}</h2>
+            <a class="editorial-link" href="https://www.credly.com/users/adrian-bacceli/badges" target="_blank" rel="noreferrer">{content.about.credentials}</a>
+          </div>
+          <div class="skills-overview">
+            {content.about.skillGroups.map((group) => (
+              <section class="capability-group">
+                <h3>{group.name}</h3>
+                {group.items.map(([name, action]) => <div class="capability-row"><span>{name}</span><strong>{action}</strong></div>)}
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <KpiShowcase client:visible locale={locale} eyebrow={content.impact.eyebrow} heading={content.impact.heading} instruction={content.impact.instruction} closeLabel={content.impact.close} programExecution={content.impact.programExecution} metrics={content.impact.metrics} />
+
+    <ProjectsCarousel client:visible heading={content.projects.heading} seeAll={content.projects.seeAll} previous={content.projects.previous} next={content.projects.next} reserved={content.projects.reserved} projects={content.projects.items} />
+
+    <section id="contact" class="mx-auto max-w-6xl px-6 pb-20 pt-8 md:pb-28">
+      <div class="rounded-3xl border border-neutral-300 p-8 dark:border-neutral-800">
+        <div class="grid gap-6 md:grid-cols-[1.2fr,0.8fr] md:items-center">
+          <div>
+            <h2 class="text-xl font-semibold md:text-2xl">{content.contact.heading}</h2>
+            <p class="mt-2 max-w-prose text-neutral-700 dark:text-neutral-300">{content.contact.body}</p>
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <a class="primary-button" href="mailto:contactme@adrianbacceli.com"><Mail size={16} /> {content.contact.email}</a>
+              <a class="secondary-button" href="tel:+50765125606"><Phone size={16} /> {content.contact.call}</a>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-stone-100 p-6 dark:bg-neutral-900">
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-center justify-between gap-4"><span class="opacity-70">{content.contact.locationLabel}</span><span>{content.contact.location}</span></li>
+              <li class="flex items-center justify-between gap-4"><span class="opacity-70">{content.contact.scopeLabel}</span><span>{content.contact.scope}</span></li>
+              <li class="flex items-center justify-between gap-4"><span class="opacity-70">{content.contact.focusLabel}</span><span class="text-right">{content.contact.focus}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-5xl px-6 pb-10 pt-6 text-sm text-neutral-600 dark:text-neutral-500 md:px-8">
+    <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+      <p>© {new Date().getFullYear()} Adrián Alberto Bacceli. {content.footer.rights}</p>
+      <nav class="flex flex-wrap items-center justify-center gap-2" aria-label={content.nav.menu}>
+        <a class="editorial-link" href={root}>{content.footer.top}</a><span>·</span>
+        <a class="editorial-link" href="#about">{content.footer.about}</a><span>·</span>
+        <a class="editorial-link" href="#projects">{content.footer.projects}</a><span>·</span>
+        <a class="editorial-link" href="https://blog.adrianbacceli.com">{content.footer.blog}</a><span>·</span>
+        <a class="editorial-link" href="https://kb.adrianbacceli.com">{content.footer.knowledge}</a><span>·</span>
+        <a class="editorial-link" href="#contact">{content.footer.contact}</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<style>
+  .primary-button, .secondary-button { min-height: 2.5rem; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .55rem 1rem; border: 1px solid #171717; border-radius: .5rem; font-size: .86rem; font-weight: 600; text-decoration: none; transition: background .18s ease, border-color .18s ease, color .18s ease; }
+  .primary-button { background: #171717; color: white; }
+  .primary-button:hover, .primary-button:focus-visible { background: #98723c; border-color: #98723c; outline: none; }
+  .secondary-button { background: transparent; color: #171717; border-color: #c8c4bc; }
+  .secondary-button:hover, .secondary-button:focus-visible { border-color: #98723c; background: rgba(152,114,60,.07); outline: none; }
+  :global(.dark) .primary-button { border-color: #f5f5f5; background: #f5f5f5; color: #171717; }
+  :global(.dark) .primary-button:hover, :global(.dark) .primary-button:focus-visible { border-color: #c5a46d; background: #c5a46d; }
+  :global(.dark) .secondary-button { border-color: #404a59; color: #f5f5f5; }
+  :global(.dark) .secondary-button:hover, :global(.dark) .secondary-button:focus-visible { border-color: #c5a46d; }
+  .editorial-link { color: inherit; font-size: .78rem; font-weight: 600; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .25rem; transition: text-decoration-color .18s ease; }
+  .editorial-link:hover, .editorial-link:focus-visible { text-decoration-color: #98723c; outline: none; }
+</style>

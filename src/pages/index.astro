@@ -1,0 +1,9 @@
+---
+import PortfolioPage from '../components/PortfolioPage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { content } from '../i18n/content';
+const locale = 'en';
+---
+<SiteLayout locale={locale} content={content[locale]}>
+  <PortfolioPage locale={locale} content={content[locale]} />
+</SiteLayout>

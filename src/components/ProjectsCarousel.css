@@ -1,0 +1,248 @@
+.projects-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.projects-heading > div:first-child {
+  display: flex;
+  align-items: baseline;
+  gap: .8rem;
+}
+
+.projects-heading h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.projects-heading > div:first-child > span {
+  color: #737373;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .65rem;
+}
+
+.projects-heading-actions,
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.projects-all-link {
+  color: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: .24rem;
+  transition: text-decoration-color .18s ease;
+}
+
+.projects-all-link:hover,
+.projects-all-link:focus-visible {
+  text-decoration-color: #98723c;
+  outline: none;
+}
+
+.carousel-controls button {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d4d4d4;
+  border-radius: .55rem;
+  background: transparent;
+  color: #262626;
+  cursor: pointer;
+  transition: border-color .18s, opacity .18s;
+}
+
+.dark .carousel-controls button {
+  border-color: #2e2e2e;
+  color: #ededed;
+}
+
+.carousel-controls button:hover:not(:disabled),
+.carousel-controls button:focus-visible {
+  border-color: #98723c;
+  outline: none;
+}
+
+.dark .carousel-controls button:hover:not(:disabled),
+.dark .carousel-controls button:focus-visible {
+  border-color: #c5a46d;
+}
+
+.carousel-controls button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.carousel-controls svg {
+  width: 1rem;
+}
+
+.projects-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.projects-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-track {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.project-card {
+  min-width: calc((100% - 3rem) / 3);
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid #e5e5e5;
+  border-radius: .75rem;
+  background: #fff;
+  color: #171717;
+  scroll-snap-align: start;
+  transition: box-shadow .2s, border-color .2s;
+}
+
+.dark .project-card {
+  border-color: #262626;
+  background: #0a0a0a;
+  color: #f5f5f5;
+}
+
+.project-card:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+.dark .project-card:hover {
+  border-color: #404040;
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.project-card > p {
+  margin: .6rem 0 0;
+  color: #525252;
+  font-size: .8rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.dark .project-card > p {
+  color: #b0b0b0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 1rem 0;
+}
+
+.project-tag {
+  padding: .2rem .48rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  font-size: .65rem;
+}
+
+.dark .project-tag {
+  border-color: #262626;
+}
+
+.project-action {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: .5rem .8rem;
+  border: 1px solid #d4d4d4;
+  border-radius: .5rem;
+  color: #262626;
+  font-size: .78rem;
+  font-weight: 600;
+  transition: border-color .18s ease, background .18s ease;
+}
+
+.dark .project-action {
+  border-color: #404a59;
+  color: #f5f5f5;
+}
+
+.project-action:hover,
+.project-action:focus-visible {
+  border-color: #98723c;
+  background: rgba(152, 114, 60, .07);
+  outline: none;
+}
+
+.dark .project-action:hover,
+.dark .project-action:focus-visible {
+  border-color: #c5a46d;
+}
+
+.project-placeholder {
+  justify-content: center;
+  border-style: dashed;
+  background: #fafafa;
+}
+
+.dark .project-placeholder {
+  background: #111;
+}
+
+.placeholder-content span {
+  color: #98723c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .65rem;
+  font-weight: 800;
+}
+
+.dark .placeholder-content span {
+  color: #c5a46d;
+}
+
+.placeholder-content h3 {
+  margin-top: .65rem;
+}
+
+.placeholder-content p {
+  margin: .4rem 0 0;
+  color: #737373;
+  font-size: .75rem;
+}
+
+@media (max-width: 767px) {
+  .projects-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .projects-heading-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .project-card {
+    min-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-viewport {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,63 @@
+.skills-overview {
+  --skill-gold: #98723c;
+  --skill-line: #d4d4d4;
+  --skill-text: #262626;
+  --skill-muted: #525252;
+  padding: 1.25rem;
+  border: 1px solid var(--skill-line);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.dark .skills-overview {
+  --skill-gold: #c5a46d;
+  --skill-line: #2e2e2e;
+  --skill-text: #ededed;
+  --skill-muted: #a3a3a3;
+  background: #0a0a0a;
+}
+
+.capability-group {
+  padding: 1.15rem 0 .4rem;
+  border-bottom: 1px solid var(--skill-line);
+}
+
+.capability-group:first-child {
+  padding-top: 0;
+}
+
+.capability-group:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.capability-group h3 {
+  margin: 0 0 .75rem;
+  color: var(--skill-text);
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.capability-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .5rem 0;
+  color: var(--skill-muted);
+  font-size: .72rem;
+}
+
+.capability-row strong {
+  color: var(--skill-gold);
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 420px) {
+  .capability-row {
+    align-items: flex-start;
+  }
+}

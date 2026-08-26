@@ -1,0 +1,137 @@
+---
+import type { Locale, SiteContent } from '../i18n/content';
+import { localeLabels, localePath, locales } from '../i18n/content';
+
+interface Props { locale: Locale; content: SiteContent }
+const { locale, content } = Astro.props;
+const nav = content.nav;
+const local = (hash = '') => `${localePath(locale)}${hash}`;
+const links = [
+  { label: nav.home, href: local() },
+  { label: nav.about, href: local('#about') },
+  { label: nav.projects, href: local('#projects') },
+  { label: nav.blog, href: 'https://blog.adrianbacceli.com', external: true },
+  { label: nav.knowledge, href: 'https://kb.adrianbacceli.com', external: true },
+  { label: nav.credentials, href: 'https://www.credly.com/users/adrian-bacceli/badges', external: true },
+];
+---
+<header class="site-header" data-site-header>
+  <div class="header-shell">
+    <nav class="desktop-nav" aria-label={nav.menu}>
+      {links.map((link) => <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.label}{link.external && <span aria-hidden="true">↗</span>}</a>)}
+    </nav>
+    <div class="header-controls">
+      <details class="language-menu">
+        <summary aria-label={nav.selectLanguage}><span>{locale.toUpperCase()}</span><span aria-hidden="true">⌄</span></summary>
+        <ul>
+          {locales.map((item) => <li><a href={localePath(item)} data-language-link aria-current={item === locale ? 'page' : undefined}><span>{item.toUpperCase()}</span>{localeLabels[item]}</a></li>)}
+        </ul>
+      </details>
+      <button class="icon-button theme-toggle" type="button" aria-label={nav.toggleTheme} data-theme-toggle>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.1A8.5 8.5 0 0 1 9.9 3.5 8.5 8.5 0 1 0 20.5 14.1Z" /></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
+      </button>
+      <button class="icon-button menu-toggle" type="button" aria-label={nav.openMenu} aria-expanded="false" aria-controls="mobile-drawer" data-menu-open>☰</button>
+    </div>
+  </div>
+</header>
+<div class="drawer-layer" data-drawer-layer hidden>
+  <button class="drawer-backdrop" type="button" aria-label={nav.closeBackdrop} data-menu-close></button>
+  <aside id="mobile-drawer" class="drawer" aria-label={nav.menu}>
+    <div class="drawer-heading"><strong>{nav.menu}</strong><button type="button" aria-label={nav.closeMenu} data-menu-close>×</button></div>
+    <nav>{links.map((link) => <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.label}{link.external && <span aria-hidden="true">↗</span>}</a>)}</nav>
+  </aside>
+</div>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (header) {
+    const themeButton = header.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+    themeButton?.addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark');
+      localStorage.theme = dark ? 'dark' : 'light';
+    });
+
+    header.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (!location.hash) return;
+        event.preventDefault();
+        const target = new URL(link.href, location.origin);
+        target.hash = location.hash;
+        location.href = target.toString();
+      });
+    });
+
+    const languageMenu = header.querySelector<HTMLDetailsElement>('.language-menu');
+    const languageSummary = languageMenu?.querySelector<HTMLElement>('summary');
+    document.addEventListener('pointerdown', (event) => {
+      if (languageMenu?.open && event.target instanceof Node && !languageMenu.contains(event.target)) {
+        languageMenu.removeAttribute('open');
+      }
+    });
+
+    const layer = document.querySelector<HTMLElement>('[data-drawer-layer]');
+    const open = header.querySelector<HTMLButtonElement>('[data-menu-open]');
+    const closeDrawer = () => {
+      if (!layer || !open) return;
+      layer.hidden = true;
+      open.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      open.focus();
+    };
+    open?.addEventListener('click', () => {
+      if (!layer) return;
+      layer.hidden = false;
+      open.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+      layer.querySelector<HTMLElement>('[data-menu-close]')?.focus();
+    });
+    layer?.querySelectorAll<HTMLElement>('[data-menu-close]').forEach((button) => button.addEventListener('click', closeDrawer));
+    layer?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => link.addEventListener('click', closeDrawer));
+    window.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if (languageMenu?.open) {
+        languageMenu.removeAttribute('open');
+        languageSummary?.focus();
+      }
+      if (layer && !layer.hidden) closeDrawer();
+    });
+  }
+</script>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 100; isolation: isolate; border-bottom: 1px solid rgba(120,106,83,.18); background: transparent; box-shadow: 0 6px 22px rgba(64,52,35,.035); }
+  .site-header::before { position: absolute; inset: 0; z-index: -1; content: ''; pointer-events: none; background: rgba(248,245,238,.48); -webkit-backdrop-filter: blur(18px) saturate(130%); backdrop-filter: blur(18px) saturate(130%); }
+  :global(.dark) .site-header { border-color: rgba(163,163,163,.14); box-shadow: 0 7px 24px rgba(0,0,0,.11); }
+  :global(.dark) .site-header::before { background: rgba(20,20,20,.52); }
+  .header-shell { position: relative; z-index: 1; max-width: 72rem; min-height: 4.25rem; margin: 0 auto; padding: .75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .desktop-nav { display: flex; align-items: center; gap: 1.5rem; white-space: nowrap; font-size: .82rem; font-weight: 600; }
+  .desktop-nav a, .drawer a { color: inherit; text-decoration: none; }
+  .desktop-nav a { display: flex; align-items: center; gap: .25rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .28rem; transition: text-decoration-color .18s ease; }
+  .desktop-nav a:hover, .desktop-nav a:focus-visible { text-decoration-color: #98723c; outline: none; }
+  .desktop-nav span, .drawer nav span { opacity: .55; font-size: .68rem; }
+  .header-controls { display: flex; align-items: center; gap: .45rem; flex-shrink: 0; }
+  .icon-button, .language-menu summary { min-width: 2.45rem; height: 2.45rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: .6rem; background: transparent; color: inherit; cursor: pointer; }
+  .icon-button:hover, .icon-button:focus-visible, .language-menu summary:hover, .language-menu summary:focus-visible { border-color: rgba(152,114,60,.45); outline: none; }
+  .icon-button svg { width: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .sun { display: none; } :global(.dark) .moon { display: none; } :global(.dark) .sun { display: block; }
+  .language-menu { position: relative; }
+  .language-menu summary { gap: .28rem; min-width: 3.75rem; padding: 0 .55rem; list-style: none; font-size: .68rem; font-weight: 800; letter-spacing: .06em; }
+  .language-menu summary::-webkit-details-marker { display: none; }
+  .language-menu ul { position: absolute; top: calc(100% + .55rem); right: 0; z-index: 20; min-width: 9.5rem; margin: 0; padding: .4rem; border: 1px solid rgba(120,106,83,.18); border-radius: .7rem; background: rgba(248,245,238,.48); box-shadow: 0 12px 30px rgba(54,43,28,.09); -webkit-backdrop-filter: blur(18px) saturate(130%); backdrop-filter: blur(18px) saturate(130%); list-style: none; }
+  :global(.dark) .language-menu ul { border-color: rgba(163,163,163,.14); background: rgba(20,20,20,.52); box-shadow: 0 12px 30px rgba(0,0,0,.16); }
+  .language-menu a { display: flex; gap: .7rem; padding: .62rem .7rem; border-radius: .42rem; color: inherit; font-size: .76rem; text-decoration: none; }
+  .language-menu a:hover, .language-menu a:focus-visible, .language-menu a[aria-current='page'] { background: rgba(152,114,60,.1); outline: none; }
+  .language-menu a span { width: 1.7rem; color: #98723c; font-size: .65rem; font-weight: 800; }
+  .menu-toggle { display: none; font-size: 1rem; }
+  .drawer-layer[hidden] { display: none; }
+  .drawer-layer { position: fixed; inset: 0; z-index: 200; }
+  .drawer-backdrop { position: absolute; inset: 0; border: 0; background: rgba(10,15,22,.48); }
+  .drawer { position: absolute; inset: 0 auto 0 0; width: min(20rem, 86vw); min-height: 100vh; border-right: 1px solid #d9d2c6; background: rgba(248,245,238,.98); box-shadow: 20px 0 50px rgba(0,0,0,.16); backdrop-filter: blur(18px); }
+  :global(.dark) .drawer { border-color: #3e4858; background: rgba(27,34,44,.98); }
+  .drawer-heading { min-height: 4.25rem; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(120,106,83,.18); }
+  .drawer-heading button { width: 2.25rem; height: 2.25rem; border: 0; background: transparent; color: inherit; font-size: 1.4rem; cursor: pointer; }
+  .drawer nav { display: flex; flex-direction: column; padding: .75rem 1.25rem; }
+  .drawer nav a { display: flex; align-items: center; justify-content: space-between; padding: .9rem .25rem; border-bottom: 1px solid rgba(120,106,83,.12); font-size: .88rem; font-weight: 600; }
+  @media (max-width: 1000px) { .desktop-nav { display: none; } .header-shell { justify-content: flex-end; } .menu-toggle { display: inline-flex; } }
+</style>
